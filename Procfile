@@ -1,4 +1,4 @@
 worker node bot.js
 heroku logs --tail
-install --discord.js
+--discord.js
 install --help
