@@ -17,9 +17,9 @@ client.on('message', msg => {
 	  return;
   }
   if (msg.content.toLowerCase() === prefix + 'ping') {
-    msg.reply('Roket Hızım :rocket: **' + client.ping + '** ms');
+    msg.reply('Pong! **' + client.ping + '** ms');
   }
-  if (msg.content === prefix + 'Sigara') {
+  if (msg.content.toLowerCase() === prefix + 'sigaraic') {
     msg.send('Sigara İçiyorum!');
     msg.edit(' :smoking: :cloud: :cloud: :cloud: ');
     msg.edit(' :smoking: :cloud: :cloud: ');
@@ -31,33 +31,19 @@ client.on('message', msg => {
     msg.delete();
     msg.channel.sendMessage(msg.content);
   }
-  if (msg.content.toLowerCase() === prefix + 'sil') {
-    msg.channel.bulkDelete(5000);
-    msg.channel.sendMessage("__adet mesaj silindi!__");
+  if (msg.content.toLowerCase() === prefix + 'temizle') {
+    msg.channel.bulkDelete(400);
+    msg.channel.sendMessage("400 adet mesaj silindi!");
   }
   if (msg.content.toLowerCase() === prefix + 'reboot') {
     if (msg.author.id !== ayarlar.sahip) {
-      msg.reply('__Benim yapımcım değilsin!__');
+      msg.reply('Benim yapımcım değilsin!');
     } else {
       msg.channel.sendMessage(`Bot yeniden başlatılıyor...`).then(msg => {
       console.log(`BOT: Bot yeniden başlatılıyor...`);
       process.exit(0);
     })
    }
-  }
-});
-
-client.on('message', msg => {
-  if (msg.content === '!p https://discord.gg') {
-    msg.delete(5)
-    msg.reply(' `Lütfen şunu kes! Başka işler ile ilgilenir misin?` ');
-  }
-});
-
-client.on('message', msg => {
-  if (msg.content === '!p') {
-    msg.delete(10)
-    msg.reply(' `Lütfen şunu kes! Başka işler ile ilgilenir misin?` ');
   }
 });
 

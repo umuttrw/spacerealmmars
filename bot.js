@@ -8,29 +8,35 @@ const moment = require('moment');
 require('./util/eventLoader')(client);
 
 var prefix = ayarlar.prefix;
+var role = ayarlar.role;
+var Long = require("long");
 
 const log = message => {
   console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message}`);
 };
 
-bot.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', 'hosgeldiniz-log');
-  if (!channel) return;
-  if(!channel) return message.channel.send(" `mod-log` İsminde Yazı Kanalı Bulamıyorum.!");
+client.on("guildMemberAdd", (member) => {
+let guild = member.guild; // Reading property `guild` of guildmember object.
+let server = member.count;
+let user = member.user
+let username = member.user.username; // GuildMembers don't have a tag property, read property user of guildmember to get the user object from it
+if(guild.systemChannel){ // Checking if it's not null
+	guild.systemChannel.send('\n **'+(user)+'** **Space Realm: Marsa, Hoş Geldin !**. \n Kayıt olmak içi ses odalarına girebilir misin?');
+}
+});
 
-  channel.send(`Sunucuya hoşgeldiniz, ${member}`);
-  const sunucubilgi = new Discord.RichEmbed()
-  .setAuthor(`**Aramıza Hoşgeldin.** 🚀 ${member}`)
-  .setColor(3447003)
-  .setTimestamp()
-  .setDescription('')
-  .setImage(`https://cdn.discordapp.com/attachments/584989861719572482/590576147331547148/marsa-hosgeldiniz.gif`)
-  return message.channel.sendEmbed(sunucubilgi);
+bot.on('guildMemberAdd', member => {
+    member.guild.channels.get('608755856934305821').send("Hoş Geldin"); 
+});
+
+client.on('ready', () => {
+  let channel = client.channels.get('609288972463636481');
+  channel.join()
 });
 
 client.on('message', msg => {
   if (msg.content === 'amk') {
-    client.channels.get(607661848602607656)
+    client.channels.get(608734984383102995)
     msg.delete(5)
     msg.reply(' `Lütfen şunu kes! Başka işler ile ilgilenir misin?` ');
 
@@ -102,6 +108,54 @@ client.on('message', msg => {
     msg.reply(' `Lütfen şunu kes! Başka işler ile ilgilenir misin?` ');
   }
 });
+
+client.on('message', msg => {
+    if (msg.content.toLowerCase() === 'sa') {
+          if (!msg.guild.member(msg.author).hasPermission("SEND_MESSAGES")) {
+          msg.react("🇦");
+          msg.react("🇸");           
+          } else {
+          msg.react("🇦");       
+          msg.react("🇸");
+          }
+      }
+  });
+
+client.on('message', msg => {
+    if (msg.content.toLowerCase() === 'Selam') {
+          if (!msg.guild.member(msg.author).hasPermission("SEND_MESSAGES")) {
+          msg.react("🇦");
+          msg.react("🇸");           
+          } else {
+          msg.react("🇦");       
+          msg.react("🇸");
+          }
+      }
+  });
+
+client.on('message', msg => {
+    if (msg.content.toLowerCase() === 'slm') {
+          if (!msg.guild.member(msg.author).hasPermission("SEND_MESSAGES")) {
+          msg.react("🇦");
+          msg.react("🇸");           
+          } else {
+          msg.react("🇦");       
+          msg.react("🇸");
+          }
+      }
+  });
+
+client.on('message', msg => {
+    if (msg.content.toLowerCase() === 'Selamun Aleküm') {
+          if (!msg.guild.member(msg.author).hasPermission("SEND_MESSAGES")) {
+          msg.react("🇦");
+          msg.react("🇸");           
+          } else {
+          msg.react("🇦");       
+          msg.react("🇸");
+          }
+      }
+  });
 //ᴀǫ
 client.on('message', msg => {
   if (msg.content === 'ᴀǫ') {
@@ -133,9 +187,25 @@ client.on('message', msg => {
   }
 });
 
+client.on('message', message => {
+if (message.content.toLowerCase() === prefix + "beynim") {
+    var sans = ["11", "15", "20", "24", "28", "31", "39", "45", "49", "54", "58", "63", "67", "77", "73", "84", "80", "83", "96", "94", "99", "Albert Einstein mısın krdşm"];
+    var sonuc = sans[Math.floor((Math.random() * sans.length))];
+    const embed = new Discord.RichEmbed()
+    .addField(`**IQ Seviyen💡**`, `${sonuc}`)
+    return message.channel.sendEmbed(embed);
+}
+});
+
 client.on('message', msg => {
   if (msg.content === '!tag') {
     msg.channel.send('⸘');
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content === '!link') {
+    msg.channel.send('`Sınırsız Mars Seyehat Bileti:`https://discord.gg/Z9K9gC6 🚀');
   }
 });
 
@@ -455,9 +525,6 @@ client.elevation = message => {
 };
 
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
-// client.on('debug', e => {
-//   console.log(chalk.bgBlue.green(e.replace(regToken, 'that was redacted')));
-// });
 
 client.on('warn', e => {
   console.log(chalk.bgYellow(e.replace(regToken, 'that was redacted')));
