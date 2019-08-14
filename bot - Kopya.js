@@ -32,7 +32,7 @@ client.on('message', msg => {
     msg.channel.sendMessage(msg.content);
   }
   if (msg.content.toLowerCase() === prefix + 'temizle') {
-    msg.channel.bulkDelete(100);
+    msg.channel.bulkDelete(400);
     msg.channel.sendMessage("100 adet mesaj silindi!");
   }
   if (msg.content.toLowerCase() === prefix + 'reboot') {
