@@ -4,11 +4,12 @@ const bot = new Discord.Client();
 const ayarlar = require('./ayarlar.json');
 const chalk = require('chalk');
 const fs = require('fs');
+client.guilds.get('<id>');
+client.on('message', message => {'<role name>'});
 const moment = require('moment');
 require('./util/eventLoader')(client);
 
 var prefix = ayarlar.prefix;
-var role = ayarlar.role;
 var Long = require("long");
 
 const log = message => {
@@ -21,10 +22,10 @@ let server = member.count;
 let user = member.user
 let username = member.user.username; // GuildMembers don't have a tag property, read property user of guildmember to get the user object from it
 if(guild.systemChannel){ // Checking if it's not null
-	guild.systemChannel.send('\n **'+(user)+'** **Space Realm: Marsa, Hoş Geldin !**. \n Kayıt olmak içi ses odalarına girebilir misin?');
+	guild.systemChannel.send('Space Realm: Marsa, Hoş Geldin \n \n **'+(user)+'**, Oksijenin olduğu bir marsa giriş yaptın. :rocket:');
 }
 });
-
+        
 bot.on('guildMemberAdd', member => {
     member.guild.channels.get('608755856934305821').send("Hoş Geldin"); 
 });
