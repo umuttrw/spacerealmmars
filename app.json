@@ -1,0 +1,33 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "BOT_TOKEN": {
+      "required": true
+    }
+  },
+  "formation": {
+    "heroku": {
+      "quantity": 1,
+      "size": "Standard-1X"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "Standard-1X"
+    },
+    "web": {
+      "quantity": 1,
+      "size": "Standard-1X"
+    }
+  },
+  "name": "spacerealmmars",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
