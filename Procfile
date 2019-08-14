@@ -1,5 +1,4 @@
 worker node bot.js
 heroku logs --tail
---discord.js
-install --help
---help
+install --discord.js
+-abefhkmnptuvxBCHP or -o option
